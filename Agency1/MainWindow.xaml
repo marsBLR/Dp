@@ -1,0 +1,1431 @@
+﻿<Window
+    x:Class="Agency1.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Agency1"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="agency_wnd"
+    Title="Agency"
+    Width="1000"
+    Height="550"
+    Closed="agency_wnd_Closed"
+    Icon="clover.ico"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <Style x:Key="HeightColor">
+            <Setter Property="Control.Background" Value="AliceBlue" />
+            <Setter Property="Control.Foreground" Value="Black" />
+            <Setter Property="Control.Height" Value="30" />
+        </Style>
+        <Style x:Key="fontSize">
+            <Setter Property="Control.Height" Value="28" />
+            <Setter Property="Control.FontSize" Value="18" />
+        </Style>
+        <Style x:Key="buttonWrap" TargetType="Button">
+            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+        </Style>
+        <Style x:Key="{x:Type Button}">
+            <Setter Property="Control.BorderThickness" Value="2" />
+            <Setter Property="Control.BorderBrush" Value="Black" />
+        </Style>
+        <!--<Style x:Key="{x:Type Button}">
+            <Setter Property="Control.FontFamily" Value="Times new roman"></Setter>
+            <Setter Property="Control.FontSize" Value="14"></Setter>
+        </Style>-->
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="#FF2281D1" />
+                <GradientStop Offset="1" Color="AliceBlue" />
+                <GradientStop Offset="1.98" Color="#FF33288B" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Menu
+            Grid.Row="0"
+            Grid.Column="0"
+            Height="40"
+            Style="{StaticResource fontSize}">
+            <MenuItem Header="Файл" />
+            <MenuItem Header="Правка" />
+            <MenuItem Header="File to xml">
+                <MenuItem
+                    Command="ApplicationCommands.Open"
+                    CommandTarget="{Binding ElementName=tbCoordinates}"
+                    Header="_Open to xml" />
+                <MenuItem Command="ApplicationCommands.Save" Header="_Save to xml" />
+                <Separator />
+                <MenuItem
+                    Click="MenuItem_Click_3"
+                    Header="_Exit"
+                    InputGestureText="Ctrl+V" />
+            </MenuItem>
+            <MenuItem Name="About" Header="Помощь">
+                <MenuItem Click="MenuItem_Click_2" Header="О программе" />
+            </MenuItem>
+        </Menu>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <TextBlock
+                x:Name="textblock_login"
+                Width="150"
+                Height="30"
+                HorizontalAlignment="Right"
+                Background="AliceBlue"
+                FontSize="20" />
+
+        </Grid>
+        <TabControl
+            x:Name="tabControl"
+            Grid.Row="1"
+            Width="850"
+            Height="450"
+            Margin="0,0,-2,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            SelectionChanged="tabControl_SelectionChanged"
+            TabStripPlacement="Left">
+
+
+            <TabItem
+                Name="TabApplicants"
+                Width="120"
+                Header="Соискатели"
+                Style="{StaticResource HeightColor}">
+                <Grid>
+                    <!--<Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="500" />
+                        <ColumnDefinition Width="250" />
+                    </Grid.ColumnDefinitions>-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="*" />
+
+                    </Grid.RowDefinitions>
+
+
+                    <ToolBarTray
+                        Grid.Row="0"
+                        Height="40"
+                        VerticalAlignment="Top">
+                        <ToolBar VerticalAlignment="Top">
+                            <ToggleButton Name="btAddApplicant" Click="btAddApplicant_Click">
+                                <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\add_user.png" />
+                            </ToggleButton>
+                            <Separator />
+                            <Button Name="btEditApplicant" Click="bt_Edit_Applicant_Click">
+                                <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\edit_user.png" />
+                            </Button>
+                            <Separator />
+                            <Button Name="btDeleteApplicant" Click="btDeleteApplicant_Click">
+                                <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\delete_user.png" />
+                            </Button>
+                            <Separator />
+                            <Button Name="btInfoApplicant" Click="bt_Info_Applicant_Click">
+                                <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\info_user.png" />
+                            </Button>
+
+                            <Separator />
+                            <Button Name="bt_Print_Info_Applicant" Click="bt_Print_Info_Applicant_Click">
+                                <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\printer.png" />
+                            </Button>
+                            <Separator />
+                            <TextBox Width="150" Foreground="LightGray">Поиск...</TextBox>
+                            <Separator />
+                            <Button Name="btSearchApplicant">
+                                <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\search_user.png" />
+                            </Button>
+
+                        </ToolBar>
+                    </ToolBarTray>
+
+                    <Grid
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        ShowGridLines="True">
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="150" />
+
+                        </Grid.ColumnDefinitions>
+                        <Grid
+                            x:Name="buttonApplicants"
+                            Grid.Row="0"
+                            Grid.RowSpan="5"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            ShowGridLines="True" />
+                        <Button
+                            Grid.Column="0"
+                            Height="40"
+                            Margin="5"
+                            Click="Button_click_report_vacancie_applicant">
+                            <Button.Content>
+                                <TextBlock Text="Подходящие вакансии (отчет)" TextWrapping="Wrap" />
+                            </Button.Content>
+                        </Button>
+
+                        <Button
+                            Grid.Column="1"
+                            Height="40"
+                            Margin="5"
+                            Click="Button_Click_Form_Vacancie">
+                            <Button.Content>
+                                <TextBlock Text="Подходящие вакансии (форма)" TextWrapping="Wrap" />
+                            </Button.Content>
+                        </Button>
+                        <Button
+                            Grid.Column="2"
+                            Width="130"
+                            Height="40"
+                            Click="Button_ALL_Applicants_Click_4"
+                            Content="Все соискатели" />
+
+                        <!--<Button
+                            Grid.Column="2"
+                            Margin="5"
+                            BorderThickness="2"
+                            Content="Сделки" />-->
+                    </Grid>
+
+
+                    <Grid Grid.Row="2" ShowGridLines="True">
+
+
+
+                        <ScrollViewer>
+                            <DataGrid
+                                x:Name="dGridApplicants"
+                                AutoGenerateColumns="False"
+                                IsReadOnly="True"
+                                ItemsSource="{Binding}"
+                                LoadingRow="dGrid_LoadingRow"
+                                RowHeaderWidth="40"
+                                SelectionMode="Single">
+
+                                <!--  IsSynchronizedWithCurrentItem="True"  -->
+
+
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn
+                                        Width="80"
+                                        Binding="{Binding LastNameAp}"
+                                        Header="Фамилия">
+                                        <!--<DataGridTextColumn.CellStyle>
+                                        <Style>
+                                            <Setter Property="TextBlock.TextAlignment" Value="Right" />
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>-->
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn
+                                        Width="80"
+                                        Binding="{Binding NameAp}"
+                                        Header="Имя" />
+                                    <DataGridTextColumn
+                                        Width="80"
+                                        Binding="{Binding PatronymicAp}"
+                                        Header="Отчество" />
+                                    <DataGridTextColumn
+                                        Width="100"
+                                        Binding="{Binding DateBirth, StringFormat='{}{0:yyyy/MM/dd}'}"
+                                        Header="Дата Рождения" />
+                                    <DataGridTextColumn
+                                        Width="80"
+                                        Binding="{Binding Gender}"
+                                        Header="Пол" />
+                                    <DataGridTextColumn
+                                        Width="80"
+                                        Binding="{Binding Path=Position.PositionName}"
+                                        Header="Должность" />
+                                    <DataGridTextColumn
+                                        Width="80"
+                                        Binding="{Binding Path=Agent.LastNameAgent}"
+                                        Header="Агент" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem
+                Name="TabEmployer"
+                Header="Работодатели"
+                Style="{StaticResource HeightColor}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ToolBarTray
+                        Grid.Row="0"
+                        Height="40"
+                        VerticalAlignment="Top">
+                        <ToolBar VerticalAlignment="Top">
+                            <ToggleButton Name="btAddEmployer" Click="btnAddEmplouer_Click">
+                                <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\add_user.png" />
+                            </ToggleButton>
+                            <Separator />
+                            <Button Name="btEditEmployer" Click="btEditEmployer_Click">
+                                <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\edit_user.png" />
+                            </Button>
+                            <Separator />
+                            <Button Name="btDeleteEmployer" Click="btDeleteEmployer_Click">
+                                <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\delete_user.png" />
+                            </Button>
+                            <Separator />
+                            <Button Name="btInfoApfghfplicant" Click="bt_Info_Applicant_Click">
+                                <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\info_user.png" />
+                            </Button>
+
+                            <Separator />
+                            <Button Name="bt_Print_Info_Appfhlicant" Click="bt_Print_Info_Applicant_Click">
+                                <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\printer.png" />
+                            </Button>
+                            <Separator />
+                            <TextBox Width="150" Foreground="LightGray">Поиск...</TextBox>
+                            <Separator />
+                            <Button Name="btSearchApplifghfcant">
+                                <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\search_user.png" />
+                            </Button>
+
+                        </ToolBar>
+                    </ToolBarTray>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="110" />
+                            <ColumnDefinition Width="130" />
+                        </Grid.ColumnDefinitions>
+                        <!--<Button
+                            Name="btAddEmployer"
+                            Grid.Column="0"
+                            Height="25"
+                            Margin="5"
+                            Click="btnAddEmplouer_Click"
+                            Content="Добавить" />-->
+
+
+                        <!--<Button
+                            Name="btEditEmployer"
+                            Grid.Column="1"
+                            Height="25"
+                            Margin="5"
+                            Click="btEditEmployer_Click"
+                            Content="Изменить" />-->
+                        <!--<Button
+                            Name="btDeleteEmployer"
+                            Grid.Column="2"
+                            Height="25"
+                            Margin="5"
+                            Click="btDeleteEmployer_Click"
+                            Content="Удалить" />-->
+
+
+                        <!--<Button
+                            Grid.Column="3"
+                            Height="25"
+                            Margin="5"
+                            Click="Button_Click_1"
+                            Content="Список вакансий" />
+                        <Button
+                            Grid.Column="4"
+                            Height="25"
+                            Margin="5"
+                            Click="AddVacancieEmployer_Click"
+                            Content="Добавить вакансию" />-->
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <ScrollViewer>
+                            <DataGrid
+                                x:Name="dGridEmployer"
+                                Margin="0,0,0,10"
+                                AutoGenerateColumns="False"
+                                IsReadOnly="True"
+                                IsSynchronizedWithCurrentItem="True"
+                                ItemsSource="{Binding}"
+                                LoadingRow="dGrid_LoadingRow"
+                                RowHeaderWidth="40"
+                                SelectionMode="Single">
+                                <DataGrid.Columns>
+
+                                    <DataGridTextColumn
+                                        x:Name="nameEmployer"
+                                        Width="110"
+                                        Binding="{Binding NameEmployer}"
+                                        Header="Название" />
+                                    <DataGridTextColumn
+                                        x:Name="industry"
+                                        Width="120"
+                                        Binding="{Binding Industry}"
+                                        Header="Отрасль" />
+                                    <DataGridTextColumn
+                                        Width="200"
+                                        Binding="{Binding AddressEmployer}"
+                                        Header="Адрес" />
+                                    <DataGridTextColumn
+                                        Width="80"
+                                        Binding="{Binding Phone}"
+                                        Header="Телефон" />
+                                    <DataGridTextColumn
+                                        Width="180"
+                                        Binding="{Binding FullNameEmployers}"
+                                        Header="Контактное лицо" />
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+                    </Grid>
+
+                </Grid>
+
+
+
+            </TabItem>
+
+            <TabItem
+                Name="TabVacancie"
+                Header="Вакансии"
+                Style="{StaticResource HeightColor}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="300" />
+
+                    </Grid.RowDefinitions>
+                    <Grid
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        ShowGridLines="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="150" />
+                        </Grid.ColumnDefinitions>
+                        <Grid
+                            x:Name="buttonVacancy"
+                            Grid.Row="0"
+                            Grid.RowSpan="5"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            ShowGridLines="True" />
+                        <Button
+                            Grid.Column="0"
+                            Margin="5"
+                            Click="Button_Click_Report_Applicant">
+                            <Button.Content>
+                                <TextBlock Text="Подходящие соискатели (Отчет)" TextWrapping="Wrap" />
+                            </Button.Content>
+                        </Button>
+                        <Button
+                            Grid.Column="1"
+                            Margin="5"
+                            Click="Button_applicant_to_vacanvie_Click">
+
+                            <Button.Content>
+                                <TextBlock Text="Подходящие соискатели (Форма)" TextWrapping="Wrap" />
+                            </Button.Content>
+
+
+                        </Button>
+                        <!--<Button
+                            Grid.Column="2"
+                            Margin="5"
+                            Background="Yellow"
+                            BorderBrush="Black"
+                            BorderThickness="2"
+                            Content="Работодатель" />-->
+                        <!--<Button
+                            Grid.Column="3"
+                            Margin="5"
+                            Background="Yellow"
+                            BorderBrush="Black"
+                            BorderThickness="2"
+                            Content="Сделки" />-->
+                        <Button
+                            Grid.Column="4"
+                            Margin="5"
+                            Click="Button_ALL_Vacancies_Click_4"
+                            Content="Все вакансии" />
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <ScrollViewer>
+                            <DataGrid
+                                x:Name="dGridVacancies"
+                                AutoGenerateColumns="False"
+                                IsReadOnly="True"
+                                IsSynchronizedWithCurrentItem="True"
+                                ItemsSource="{Binding}"
+                                LoadingRow="dGrid_LoadingRow"
+                                RowHeaderWidth="40"
+                                SelectionMode="Single">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn
+                                        Width="80"
+                                        Binding="{Binding Path=Position.PositionName}"
+                                        Header="Должность" />
+
+                                    <DataGridTextColumn
+                                        Width="60"
+                                        Binding="{Binding Gender}"
+                                        Header="Пол" />
+                                    <DataGridTextColumn
+                                        Width="84"
+                                        Binding="{Binding Education}"
+                                        Header="Образование" />
+
+                                    <DataGridTextColumn
+                                        Width="50"
+                                        Binding="{Binding DrivingLicence}"
+                                        Header="В/У" />
+                                    <DataGridTextColumn
+                                        Width="60"
+                                        Binding="{Binding Path=Salary}"
+                                        Header="Зарплата" />
+                                    <DataGridTextColumn
+                                        Width="100"
+                                        Binding="{Binding Path=WorkingConditions}"
+                                        Header="Должностные обязанности" />
+
+                                    <DataGridTextColumn
+                                        Width="105"
+                                        Binding="{Binding Path=DateFilling, StringFormat='{}{0:yyyy/MM/dd}'}"
+                                        Header="Дата заполнения" />
+                                    <DataGridTextColumn
+                                        Width="80"
+                                        Binding="{Binding Path=OpenVacancy}"
+                                        Header="Открыта" />
+                                    <DataGridTextColumn
+                                        Width="100"
+                                        Binding="{Binding Path=Employer.NameEmployer}"
+                                        Header="Работодатель" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Сделки" Style="{StaticResource HeightColor}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="240" />
+                        <RowDefinition Height="200" />
+                    </Grid.RowDefinitions>
+                    <Grid
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        ShowGridLines="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="150" />
+                        </Grid.ColumnDefinitions>
+                        <Grid
+                            x:Name="buttonDeal"
+                            Grid.Row="0"
+                            Grid.RowSpan="5"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            ShowGridLines="True" />
+                        <Button
+                            Grid.Column="0"
+                            Margin="5"
+                            Content="Вакансии" />
+                        <Button
+                            Name="CloseVacancie"
+                            Grid.Column="1"
+                            Margin="5"
+                            Click="Button_Close_Vacancy_Click"
+                            Content="Закрытие вакансии"
+                            IsEnabled="{Binding ElementName=dGridDeals, Path=Paid.да}" />
+                        <Button
+                            Grid.Column="2"
+                            Margin="5"
+                            Content="Соискатель" />
+                        <Button
+                            Grid.Column="3"
+                            Margin="5"
+                            Content="Агент" />
+                        <Button
+                            Grid.Column="4"
+                            Margin="5"
+                            Content="Отчет" />
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="200" />
+                        </Grid.ColumnDefinitions>
+                        <Grid
+                            x:Name="DealInfo"
+                            Grid.Row="0"
+                            Grid.RowSpan="8"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Background="#FFE5E5E5"
+                            ShowGridLines="True" />
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontSize="20"
+                            Text="Номер Сделки" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontSize="20"
+                            Text="Фамилия Соискателя" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            FontSize="20"
+                            Text="Номер Вакансии" />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            FontSize="20"
+                            Text="Агент" />
+                        <TextBlock
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            FontSize="20"
+                            Text="Дата составления" />
+                        <TextBlock
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            FontSize="20"
+                            Text="Коммисионные" />
+                        <TextBlock
+                            Grid.Row="6"
+                            Grid.Column="0"
+                            FontSize="20"
+                            Text="Дата оплаты" />
+                        <TextBlock
+                            Grid.Row="7"
+                            Grid.Column="0"
+                            FontSize="20"
+                            Text="Оплачено" />
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Background="Lavender"
+                            DataContext="{Binding ElementName=dGridDeals, Path=SelectedValue}"
+                            FontSize="20"
+                            Text="{Binding DealId}"
+                            TextAlignment="Right" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Background="Lavender"
+                            DataContext="{Binding ElementName=dGridDeals, Path=SelectedValue}"
+                            FontSize="20"
+                            Text="{Binding Applicant.LastNameAp}"
+                            TextAlignment="Right" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Background="Lavender"
+                            DataContext="{Binding ElementName=dGridDeals, Path=SelectedValue}"
+                            FontSize="20"
+                            Text="{Binding Vacancie.VacancieId}"
+                            TextAlignment="Right" />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Background="Lavender"
+                            DataContext="{Binding ElementName=dGridDeals, Path=SelectedValue}"
+                            FontSize="20"
+                            Text="{Binding Path=Applicant.AgentId}"
+                            TextAlignment="Right" />
+                        <TextBlock
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Background="Lavender"
+                            DataContext="{Binding ElementName=dGridDeals, Path=SelectedValue}"
+                            FontSize="20"
+                            Text="{Binding Path=DateCompilation, StringFormat='{}{0:yyyy/MM/dd}'}"
+                            TextAlignment="Right" />
+                        <TextBlock
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Background="Lavender"
+                            DataContext="{Binding ElementName=dGridDeals, Path=SelectedValue}"
+                            FontSize="20"
+                            Text="{Binding Commission}"
+                            TextAlignment="Right" />
+                        <TextBlock
+                            Grid.Row="6"
+                            Grid.Column="1"
+                            Background="Lavender"
+                            DataContext="{Binding ElementName=dGridDeals, Path=SelectedValue}"
+                            FontSize="20"
+                            Text="{Binding Path=DatePaid, StringFormat='{}{0:yyyy/MM/dd}'}"
+                            TextAlignment="Right" />
+                        <TextBlock
+                            Grid.Row="7"
+                            Grid.Column="1"
+                            Background="Lavender"
+                            DataContext="{Binding ElementName=dGridDeals, Path=SelectedValue}"
+                            FontSize="20"
+                            Text="{Binding Paid}"
+                            TextAlignment="Right" />
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <DataGrid
+                            x:Name="dGridDeals"
+                            Grid.Row="0"
+                            AutoGenerateColumns="False"
+                            Background="#FFE5E5E5"
+                            IsReadOnly="True"
+                            ItemsSource="{Binding}"
+                            LoadingRow="dGrid_LoadingRow"
+                            RowHeaderWidth="40"
+                            SelectionChanged="dGridDeals_SelectionChanged1"
+                            SelectionMode="Single">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
+                                    Width="80"
+                                    Binding="{Binding DealId}"
+                                    Header="DealsID" />
+
+                                <DataGridTextColumn
+                                    Width="80"
+                                    Binding="{Binding ApplicantId}"
+                                    Header="ApplicantID" />
+                                <DataGridTextColumn
+                                    Width="80"
+                                    Binding="{Binding Vacancie.VacancieId}"
+                                    Header="VacancyId" />
+                                <DataGridTextColumn
+                                    Width="105"
+                                    Binding="{Binding Path=DateCompilation, StringFormat='{}{0:yyyy/MM/dd}'}"
+                                    Header="Дата составления" />
+                                <DataGridTextColumn
+                                    Width="80"
+                                    Binding="{Binding Path=Commission}"
+                                    Header="Коммисия" />
+                                <DataGridTextColumn
+                                    Width="100"
+                                    Binding="{Binding Path=Paid}"
+                                    Header="Оплачено" />
+                                <DataGridTextColumn
+                                    Width="105"
+                                    Binding="{Binding Path=DatePaid, StringFormat='{}{0:yyyy/MM/dd}'}"
+                                    Header="Дата оплаты" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Агенты" Style="{StaticResource HeightColor}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <ToolBarTray
+                            Grid.Row="0"
+                            Height="40"
+                            VerticalAlignment="Top">
+                            <ToolBar VerticalAlignment="Top">
+                                <ToggleButton Name="btAddAgent" Click="btnAddAgent_Click">
+                                    <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\add_user.png" />
+                                </ToggleButton>
+                                <Separator />
+                                <Button Name="btEditAgent" Click="btEditAgent_Click">
+                                    <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\edit_user.png" />
+                                </Button>
+                                <Separator />
+                                <Button Name="btDeleteAgent" Click="btDeleteAgent_Click">
+                                    <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\delete_user.png" />
+                                </Button>
+                                <Separator />
+                                <Button Name="View_Applicant" Click="View_Applicant_Click_3">
+                                    <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\info_user.png" />
+                                </Button>
+
+                                <!--<Separator />-->
+                                <!--<Button Name="bt_Pringhjt_Info_Applicant" Click="bt_Print_Info_Applicant_Click">
+                                    <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\printer.png" />
+                                </Button>-->
+                                <!--<Separator />
+                                <Button Name="btSeaghjchApplicant">
+                                    <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\search_user.png" />
+                                </Button>-->
+
+                            </ToolBar>
+                        </ToolBarTray>
+                        <Button
+                            Width="150"
+                            Height="25"
+                            Margin="5"
+                            Content="Список сделок" />
+
+
+
+
+
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <ScrollViewer>
+                            <DataGrid
+                                x:Name="dGridAgent"
+                                AutoGenerateColumns="False"
+                                IsReadOnly="True"
+                                IsSynchronizedWithCurrentItem="True"
+                                ItemsSource="{Binding}"
+                                LoadingRow="dGrid_LoadingRow"
+                                RowHeaderWidth="40"
+                                SelectionMode="Single">
+                                <DataGrid.Columns>
+
+                                    <DataGridTextColumn
+                                        x:Name="nameAgent"
+                                        Width="120"
+                                        Binding="{Binding LastNameAgent}"
+                                        Header="Фамилия" />
+                                    <DataGridTextColumn
+                                        Width="120"
+                                        Binding="{Binding NameAgent}"
+                                        Header="Имя" />
+                                    <DataGridTextColumn
+                                        Width="200"
+                                        Binding="{Binding Phone}"
+                                        Header="Телефон" />
+
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+
+                    </Grid>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Должности" Style="{StaticResource HeightColor}">
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+
+
+                        <Button
+                            Name="addPosition"
+                            Width="150"
+                            Margin="10"
+                            Click="addPosition_Click"
+                            Content="Добавть" />
+                        <Button
+                            Name="editPosition"
+                            Width="150"
+                            Margin="10"
+                            Click="editPosition_Click"
+                            Content="Изменить" />
+                        <Button
+                            Name="deletePosition"
+                            Width="150"
+                            Margin="10"
+                            Click="deletePosition_Click"
+                            Content="Удалить" />
+
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <ScrollViewer>
+                            <DataGrid
+                                x:Name="dGridPosition"
+                                AutoGenerateColumns="False"
+                                Background="#FFE5E5E5"
+                                IsReadOnly="True"
+                                IsSynchronizedWithCurrentItem="True"
+                                ItemsSource="{Binding}"
+                                LoadingRow="dGrid_LoadingRow"
+                                RowHeaderWidth="40"
+                                SelectionMode="Single">
+
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn
+                                        Width="35"
+                                        Binding="{Binding PositionId}"
+                                        Header="№">
+
+                                        <DataGridTextColumn.CellStyle>
+                                            <Style>
+                                                <Setter Property="TextBlock.TextAlignment" Value="Right" />
+                                            </Style>
+                                        </DataGridTextColumn.CellStyle>
+
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn
+                                        x:Name="name"
+                                        Width="120"
+                                        Binding="{Binding Path=PositionName}"
+                                        Header="Должность" />
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+
+                    </Grid>
+
+
+                </Grid>
+            </TabItem>
+            <TabItem
+                Name="TabReport"
+                Header="Отчеты"
+                Style="{StaticResource HeightColor}">
+                <!--<Grid Background="#FFE5E5E5" />-->
+                <TabControl
+                    x:Name="tabControl1"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Width="790"
+                    Height="430"
+                    Margin="0,0,-2,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    SelectionChanged="tabControl_SelectionChanged">
+                    <TabItem Name="tabReportWoman" Header="вакансии для женщин">
+                        <Grid>
+                            <!--<Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="500" />
+
+                            </Grid.ColumnDefinitions>-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="300" />
+                                <RowDefinition Height="250" />
+                            </Grid.RowDefinitions>
+                            <StackPanel Background="SeaShell">
+                                <TextBlock
+                                    Margin="166,0,165.8,0"
+                                    HorizontalAlignment="Center"
+                                    FontSize="30"
+                                    Text="Открытые вакансии для женщин" />
+                            </StackPanel>
+                            <Grid Grid.Row="1">
+                                <DataGrid
+                                    Name="dGridReportWoman"
+                                    Margin="0,0,0,10"
+                                    AutoGenerateColumns="False"
+                                    IsReadOnly="True"
+                                    IsSynchronizedWithCurrentItem="True"
+                                    ItemsSource="{Binding}"
+                                    Loaded="dGridReportWoman_Loaded"
+                                    LoadingRow="dGrid_LoadingRow"
+                                    RowHeaderWidth="40"
+                                    SelectionMode="Single">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn
+                                            Width="30"
+                                            Binding="{Binding VacancieId}"
+                                            Header="№" />
+
+                                        <DataGridTextColumn
+                                            x:Name="dnameEmployerReport"
+                                            Width="110"
+                                            Binding="{Binding Path=Employer.NameEmployer}"
+                                            Header="Организация" />
+                                        <DataGridTextColumn
+                                            x:Name="dGender"
+                                            Width="55"
+                                            Binding="{Binding Gender}"
+                                            Header="Пол" />
+                                        <DataGridTextColumn
+                                            x:Name="dPosition"
+                                            Width="120"
+                                            Binding="{Binding Path=Position.PositionName}"
+                                            Header="Должность" />
+                                        <DataGridTextColumn
+                                            Width="84"
+                                            Binding="{Binding Education}"
+                                            Header="Образование" />
+
+                                        <DataGridTextColumn
+                                            Width="50"
+                                            Binding="{Binding DrivingLicence}"
+                                            Header="В/У" />
+                                        <DataGridTextColumn
+                                            Width="60"
+                                            Binding="{Binding Path=Salary}"
+                                            Header="Зарплата" />
+                                        <DataGridTextColumn
+                                            Width="120"
+                                            Binding="{Binding Path=WorkingConditions}"
+                                            Header="Должностные обязанности" />
+                                        <DataGridTextColumn
+                                            Width="80"
+                                            Binding="{Binding Path=ForeignLanguage}"
+                                            Header="Иностранный язык" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="вакансии для мужчин">
+                        <Grid>
+                            <!--<Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="500" />
+
+                            </Grid.ColumnDefinitions>-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="300" />
+                                <RowDefinition Height="250" />
+                            </Grid.RowDefinitions>
+                            <StackPanel Background="SeaShell">
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    FontSize="30"
+                                    Text="Открытые вакансии для мужчин" />
+                            </StackPanel>
+                            <Grid Grid.Row="1">
+                                <DataGrid
+                                    Name="dGridReportMan"
+                                    Margin="0,0,0,10"
+                                    AutoGenerateColumns="False"
+                                    IsReadOnly="True"
+                                    IsSynchronizedWithCurrentItem="True"
+                                    ItemsSource="{Binding}"
+                                    LoadingRow="dGrid_LoadingRow"
+                                    RowHeaderWidth="40"
+                                    SelectionMode="Single">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn
+                                            Width="30"
+                                            Binding="{Binding VacancieId}"
+                                            Header="№" />
+
+                                        <DataGridTextColumn
+                                            x:Name="dnameEmployerReportM"
+                                            Width="110"
+                                            Binding="{Binding Path=Employer.NameEmployer}"
+                                            Header="Название" />
+                                        <DataGridTextColumn
+                                            x:Name="dGenderM"
+                                            Width="55"
+                                            Binding="{Binding Gender}"
+                                            Header="Пол" />
+                                        <DataGridTextColumn
+                                            x:Name="dPositionM"
+                                            Width="120"
+                                            Binding="{Binding Path=Position.PositionName}"
+                                            Header="Должность" />
+                                        <DataGridTextColumn
+                                            Width="84"
+                                            Binding="{Binding Education}"
+                                            Header="Образование" />
+
+                                        <DataGridTextColumn
+                                            Width="50"
+                                            Binding="{Binding DrivingLicence}"
+                                            Header="В/У" />
+                                        <DataGridTextColumn
+                                            Width="60"
+                                            Binding="{Binding Path=Salary}"
+                                            Header="Зарплата" />
+                                        <DataGridTextColumn
+                                            Width="120"
+                                            Binding="{Binding Path=WorkingConditions}"
+                                            Header="Должностные обязанности" />
+                                        <DataGridTextColumn
+                                            Width="80"
+                                            Binding="{Binding Path=ForeignLanguage}"
+                                            Header="Иностранный язык" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Name="tab_applicant_to_Position" Header="соискатель на должность">
+                        <Grid>
+                            <!--<Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="500" />
+                                <ColumnDefinition Width="250" />
+                            </Grid.ColumnDefinitions>-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="350" />
+
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="150" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    Name="nameAppl"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Background="Beige"
+                                    DataContext="{Binding ElementName=dGridApplicants, Path=SelectedValue}"
+                                    FontSize="20"
+                                    Text="{Binding NameAp}" />
+                                <TextBlock
+                                    Name="fullNameAppl"
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Background="Beige"
+                                    DataContext="{Binding ElementName=dGridApplicants, Path=SelectedValue}"
+                                    FontSize="20"
+                                    Text="{Binding LastNameAp}" />
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <ScrollViewer>
+                                    <DataGrid
+                                        x:Name="dGridVacancies_applicant"
+                                        Grid.Row="0"
+                                        AutoGenerateColumns="False"
+                                        IsReadOnly="True"
+                                        IsSynchronizedWithCurrentItem="True"
+                                        ItemsSource="{Binding}"
+                                        LoadingRow="dGrid_LoadingRow"
+                                        RowHeaderWidth="40"
+                                        SelectionMode="Single">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn
+                                                Width="80"
+                                                Binding="{Binding Path=Position.PositionName}"
+                                                Header="Должность" />
+
+                                            <DataGridTextColumn
+                                                Width="60"
+                                                Binding="{Binding Gender}"
+                                                Header="Пол" />
+                                            <DataGridTextColumn
+                                                Width="84"
+                                                Binding="{Binding Education}"
+                                                Header="Образование" />
+
+                                            <DataGridTextColumn
+                                                Width="50"
+                                                Binding="{Binding DrivingLicence}"
+                                                Header="В/У" />
+                                            <DataGridTextColumn
+                                                Width="60"
+                                                Binding="{Binding Path=Salary}"
+                                                Header="Зарплата" />
+                                            <DataGridTextColumn
+                                                Width="100"
+                                                Binding="{Binding Path=WorkingConditions}"
+                                                Header="Должностные обязанности">
+                                                <!--<DataGridTextColumn.ElementStyle>
+
+                                        <Style TargetType="TextBlock">
+                                        <Setter Property="TextWrapping" Value="Wrap"></Setter>
+
+                                                -->
+                                                <!--</Style>
+
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                                        </Style>-->
+                                                <!--</DataGridTextColumn.ElementStyle>-->
+                                            </DataGridTextColumn>
+
+                                            <DataGridTextColumn
+                                                Width="105"
+                                                Binding="{Binding Path=DateFilling, StringFormat='{}{0:yyyy/MM/dd}'}"
+                                                Header="Дата заполнения" />
+                                            <DataGridTextColumn
+                                                Width="80"
+                                                Binding="{Binding Path=OpenVacancy}"
+                                                Header="Открыта" />
+                                            <DataGridTextColumn
+                                                Width="100"
+                                                Binding="{Binding Path=Employer.NameEmployer}"
+                                                Header="Работодатель" />
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </ScrollViewer>
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Name="applicant_vacancie_position" Header="вакансии на должность">
+                        <Grid Background="#FFE5E5E5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="500" />
+                                <ColumnDefinition Width="200" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="180" />
+                                <RowDefinition Height="250" />
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0" Grid.ColumnSpan="2">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="51.985" />
+                                    <ColumnDefinition Width="348.015" />
+                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="150" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Width="400"
+                                    Margin="0,0,51.2,-0.2"
+                                    HorizontalAlignment="Left"
+                                    Background="SeaShell"
+                                    FontSize="25"
+                                    Text="Открытые вакансии на должность" />
+                                <ComboBox
+                                    Name="cbPositions"
+                                    Grid.Column="2"
+                                    Margin="10,5,10,5"
+                                    Background="White"
+                                    DisplayMemberPath="PositionName"
+                                    FontSize="15"
+                                    ItemsSource="{Binding Position.PositionName}"
+                                    SelectedValuePath="PositionId"
+                                    SelectionChanged="cbPositions_SelectionChanged"
+                                    Text="{Binding Path=Position.PositionName}" />
+                                <!--<TextBox Grid.Column="2" FontSize="20" Width="150" HorizontalAlignment="Center" Margin="73,0,72.2,-0.2"></TextBox>-->
+                                <Button
+                                    Name="bt_Search_applicant_vacancie"
+                                    Grid.Row="0"
+                                    Grid.Column="3"
+                                    Width="120"
+                                    Height="25"
+                                    Background="Wheat"
+                                    BorderBrush="Black"
+                                    Click="bt_Search_applicant_vacancie_Click"
+                                    Content="поиск"
+                                    IsEnabled="False" />
+
+                            </Grid>
+                            <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="457*" />
+                                    <ColumnDefinition Width="244*" />
+                                </Grid.ColumnDefinitions>
+                                <DataGrid
+                                    Name="dGridReportPosition"
+                                    Grid.ColumnSpan="2"
+                                    Margin="0,0,-0.4,10"
+                                    AutoGenerateColumns="False"
+                                    IsReadOnly="True"
+                                    IsSynchronizedWithCurrentItem="True"
+                                    ItemsSource="{Binding}"
+                                    LoadingRow="dGrid_LoadingRow"
+                                    RowHeaderWidth="40"
+                                    SelectionMode="Single">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn
+                                            Width="30"
+                                            Binding="{Binding VacancieId}"
+                                            Header="№" />
+
+                                        <DataGridTextColumn
+                                            x:Name="dnameEmployjerReport"
+                                            Width="110"
+                                            Binding="{Binding Path=Employer.NameEmployer}"
+                                            Header="Название" />
+                                        <DataGridTextColumn
+                                            x:Name="dGejnder"
+                                            Width="55"
+                                            Binding="{Binding Gender}"
+                                            Header="Пол" />
+                                        <DataGridTextColumn
+                                            x:Name="dPosijtion"
+                                            Width="120"
+                                            Binding="{Binding Path=Position.PositionName}"
+                                            Header="Должность" />
+                                        <DataGridTextColumn
+                                            Width="84"
+                                            Binding="{Binding Education}"
+                                            Header="Образование" />
+
+                                        <DataGridTextColumn
+                                            Width="50"
+                                            Binding="{Binding DrivingLicence}"
+                                            Header="В/У" />
+                                        <DataGridTextColumn
+                                            Width="60"
+                                            Binding="{Binding Path=Salary}"
+                                            Header="Зарплата" />
+                                        <DataGridTextColumn
+                                            Width="120"
+                                            Binding="{Binding Path=WorkingConditions}"
+                                            Header="Должностные обязанности" />
+                                        <DataGridTextColumn
+                                            Width="80"
+                                            Binding="{Binding Path=ForeignLanguage}"
+                                            Header="Иностранный язык" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Name="TabVacancieApplicant" Header="соискатели на вакансию">
+                        <Grid>
+                            <!--<Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="500" />
+                                <ColumnDefinition Width="250" />
+                            </Grid.ColumnDefinitions>-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="350" />
+
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="150" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    Name="nameApl"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Background="Beige"
+                                    DataContext="{Binding ElementName=dGridAp, Path=SelectedValue}"
+                                    FontSize="20"
+                                    Text="{Binding NameAp}" />
+                                <TextBlock
+                                    Name="fullNameAppll"
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Background="Beige"
+                                    DataContext="{Binding ElementName=dGridAp, Path=SelectedValue}"
+                                    FontSize="20"
+                                    Text="{Binding LastNameAp}" />
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <ScrollViewer>
+                                    <DataGrid
+                                        x:Name="dGridAp"
+                                        Grid.Row="2"
+                                        Grid.ColumnSpan="2"
+                                        AutoGenerateColumns="False"
+                                        IsReadOnly="True"
+                                        ItemsSource="{Binding}"
+                                        LoadingRow="dGrid_LoadingRow"
+                                        RowHeaderWidth="40"
+                                        SelectionMode="Single">
+
+                                        <!--  IsSynchronizedWithCurrentItem="True"  -->
+
+
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn
+                                                Width="80"
+                                                Binding="{Binding LastNameAp}"
+                                                Header="Фамилия">
+                                                <!--<DataGridTextColumn.CellStyle>
+                                        <Style>
+                                            <Setter Property="TextBlock.TextAlignment" Value="Right" />
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>-->
+                                            </DataGridTextColumn>
+                                            <DataGridTextColumn
+                                                Width="80"
+                                                Binding="{Binding NameAp}"
+                                                Header="Имя" />
+                                            <DataGridTextColumn
+                                                Width="80"
+                                                Binding="{Binding PatronymicAp}"
+                                                Header="Отчество" />
+                                            <DataGridTextColumn
+                                                Width="100"
+                                                Binding="{Binding DateBirth, StringFormat='{}{0:yyyy/MM/dd}'}"
+                                                Header="Дата Рождения" />
+                                            <DataGridTextColumn
+                                                Width="80"
+                                                Binding="{Binding Gender}"
+                                                Header="Пол" />
+                                            <DataGridTextColumn
+                                                Width="80"
+                                                Binding="{Binding Path=Position.PositionName}"
+                                                Header="Должность" />
+                                            <DataGridTextColumn
+                                                Width="80"
+                                                Binding="{Binding Path=Agent.LastNameAgent}"
+                                                Header="Агент" />
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </ScrollViewer>
+
+                            </Grid>
+                        </Grid>
+
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Agency1.DataLayer.Entities.Agent">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQACBAAAAQAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Entities\Agent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Agency1.DataLayer.Entities.Applicant">
+    <Position X="2.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAIAAAQAQAAGgAAEkAAAAAACAQAAAAQAgAAAACAA=</HashCode>
+      <FileName>Entities\Applicant.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Agency1.DataLayer.Entities.Deal">
+    <Position X="4" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAIAAAACAgAAAAAAAABAAAAAAAQAABAAAAAAAAgAA=</HashCode>
+      <FileName>Entities\Deal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Agency1.DataLayer.Entities.Employer">
+    <Position X="7.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QACAAAAAAAAAAAEAABQAAAAAAAAAAAAAAIAAIAAAAAA=</HashCode>
+      <FileName>Entities\Employer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Agency1.DataLayer.Entities.Position">
+    <Position X="7.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Entities\Position.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Agency1.DataLayer.Entities.Vacancie">
+    <Position X="5.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEACAAIAABAACgAEQAAAAEAACAAAAAAAAoAAAACAA=</HashCode>
+      <FileName>Entities\Vacancie.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Agency1.DataLayer.EFContext.Agency1Context">
+    <Position X="2.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QBAEAAAAAAAAAAAgAAEQAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EFContext\Agency1Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Agency1.DataLayer.EFContext.Agency1Initializer">
+    <Position X="4" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EFContext\Agency1Initializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Agency1.DataLayer.Repositories.AgentRepository" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\AgentsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Agency1.DataLayer.Repositories.ApplicantRepository" BaseTypeListCollapsed="true">
+    <Position X="5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\ApplicantsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Agency1.DataLayer.Repositories.DealRepository" BaseTypeListCollapsed="true">
+    <Position X="8" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\DealsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Agency1.DataLayer.Repositories.EmployerRepository" BaseTypeListCollapsed="true">
+    <Position X="2" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\EmployersRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Agency1.DataLayer.Repositories.EntityUnitOfWork" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QBIWAIAAACAACAEggAEQAAAAIAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\EntityUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Agency1.DataLayer.Repositories.PositionRepository" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\PositionsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Agency1.DataLayer.Repositories.VacancieRepository" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAACAAAA=</HashCode>
+      <FileName>Repositories\VacanciesRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Agency1.DataLayer.Interfases.IRepository&lt;T&gt;">
+    <Position X="7" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Interfases\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Agency1.DataLayer.Interfases.IUnitOfWork">
+    <Position X="8.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QBAEAIAAAAAAAAAgAAEQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfases\IUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Agency1.DataLayer.Entities.Education">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAACAAAAAAAAAAAAQAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Applicant.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Agency1.DataLayer.Entities.ForeignLanguage">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAACAAAEAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Entities\Vacancie.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Agency1.DataLayer.Entities.Gender">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEEAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Applicant.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Agency1.DataLayer.Entities.OpenVacancy">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Vacancie.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Agency1.DataLayer.Entities.Paid">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Deal.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

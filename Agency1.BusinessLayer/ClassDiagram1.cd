@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Agency1.BusinessLayer.Models.AgentViewModels" Collapsed="true">
+    <Position X="3.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQACBAAAAQAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\AgentViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Agency1.BusinessLayer.Models.ApplicantViewModels" Collapsed="true">
+    <Position X="4.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAIAAAQAQAAGgAAEkAAAAAACAQAAAAQAgAAAACAA=</HashCode>
+      <FileName>Models\ApplicantViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Agency1.BusinessLayer.Models.DealViewModels" Collapsed="true">
+    <Position X="9.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAIAAAACAgAAAAAAAABAAAAAAAQAABAAAAAAAAgAA=</HashCode>
+      <FileName>Models\DealViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Agency1.BusinessLayer.Models.EmployerViewModels" Collapsed="true">
+    <Position X="6.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QACAAAAAAAAAAAEAABQAAAAAAAAAAAAAAIAAIAAAAAA=</HashCode>
+      <FileName>Models\EmployerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Agency1.BusinessLayer.Models.PositionViewModels" Collapsed="true">
+    <Position X="1.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\PositionViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Agency1.BusinessLayer.Models.VacancieViewModels" Collapsed="true">
+    <Position X="7.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEACAAIAABAACgAEQAAAAEAACAAAAAAAAoAAAACAA=</HashCode>
+      <FileName>Models\VacancieViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Agency1.BusinessLayer.Services.AgentService" BaseTypeListCollapsed="true">
+    <Position X="7" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAEEAABAAAEAAAAAAAAAQAACAgAAAAAAAAA=</HashCode>
+      <FileName>Services\AgentService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Agency1.BusinessLayer.Services.ApplicantService" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAoAAAAAAAAEAABIAAAAAAAAAAAAAAAEAgACAAAAAAA=</HashCode>
+      <FileName>Services\ApplicantService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Agency1.BusinessLayer.Services.DealService" BaseTypeListCollapsed="true">
+    <Position X="4" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAEAABAAAAAAAAAAAAAAAAAAiAAAAAAAAA=</HashCode>
+      <FileName>Services\DealService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Agency1.BusinessLayer.Services.EmployerService" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAQAAAAAEAABEAAAAAAAAAAAAAEAAAgAAEAAAAAA=</HashCode>
+      <FileName>Services\EmployerService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Agency1.BusinessLayer.Services.PositionService" BaseTypeListCollapsed="true">
+    <Position X="2.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAiBAAAAAgAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Services\PositionService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Agency1.BusinessLayer.Services.VacancieService" BaseTypeListCollapsed="true">
+    <Position X="1" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAEgABAAAAACAAAAAAABAAIAgAACAAAAAA=</HashCode>
+      <FileName>Services\VacancieService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Agency1.BusinessLayer.Interfaces.IAgentService">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAEAAABAAAEAAAAAAAAAQAACAgAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IAgentService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Agency1.BusinessLayer.Interfaces.IApplicantService">
+    <Position X="8" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAoAAAAAAAAAAABIAAAAAAAAAAAAAAAEAgACAAAAAAA=</HashCode>
+      <FileName>Interfaces\IApplicantService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Agency1.BusinessLayer.Interfaces.IDealService">
+    <Position X="3.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAABAAAAAAAAAAAAAAAAAAiAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IDealService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Agency1.BusinessLayer.Interfaces.IEmployerService">
+    <Position X="5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAQAAAAAAAABEAAAAAAAAAAAAAEAAAgAAEAAAAAA=</HashCode>
+      <FileName>Interfaces\IEmployerService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Agency1.BusinessLayer.Interfaces.IPositionService">
+    <Position X="2" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAiBAAAAAgAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPositionService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Agency1.BusinessLayer.Interfaces.IVacancieService">
+    <Position X="6.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAgABAAAAACAAAAAAABAAIAgAACAAAAAA=</HashCode>
+      <FileName>Interfaces\IVacancieService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

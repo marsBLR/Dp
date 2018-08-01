@@ -1,0 +1,56 @@
+﻿<Window
+    x:Class="Agency1.window.About"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Agency1.window"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="О программе"
+    Width="320"
+    Height="320"
+    mc:Ignorable="d">
+    <Grid Background="AliceBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="180" />
+
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition Width="62*" />
+            <ColumnDefinition Width="85*" />
+        </Grid.ColumnDefinitions>-->
+
+        <!--<Image
+            Grid.Row="0"
+            Margin="0,4,0,2"
+            Source="../Resources/1.jpg"
+            Stretch="Uniform" />-->
+
+        <StackPanel Grid.Row="1" Margin="5,1">
+            <TextBlock
+                HorizontalAlignment="Center"
+                Text="Рожков С.Н."
+                TextWrapping="Wrap" />
+            <TextBlock
+                HorizontalAlignment="Center"
+                Text="Дипломный проект "
+                TextWrapping="Wrap" />
+            <TextBlock HorizontalAlignment="Center" Text="'Агенство по трудоустройству'" />
+
+
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <TextBlock HorizontalAlignment="Center">Верисия 1.0.1</TextBlock>
+            <Button
+                Width="60"
+                Margin="5,5,10,5"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Bottom"
+                Click="Button_Click"
+                Content="OK"
+                IsDefault="True" />
+        </StackPanel>
+
+    </Grid>
+</Window>
