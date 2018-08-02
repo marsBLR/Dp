@@ -95,9 +95,9 @@
         <TabControl
             x:Name="tabControl"
             Grid.Row="1"
-            Width="850"
+            Width="1000"
             Height="450"
-            Margin="0,0,-2,0"
+            Margin="0,0,5,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             SelectionChanged="tabControl_SelectionChanged"
@@ -218,12 +218,11 @@
                                 x:Name="dGridApplicants"
                                 AutoGenerateColumns="False"
                                 IsReadOnly="True"
+                                IsSynchronizedWithCurrentItem="True"
                                 ItemsSource="{Binding}"
                                 LoadingRow="dGrid_LoadingRow"
                                 RowHeaderWidth="40"
                                 SelectionMode="Single">
-
-                                <!--  IsSynchronizedWithCurrentItem="True"  -->
 
 
                                 <DataGrid.Columns>
@@ -588,7 +587,7 @@
                             Content="Отчет" />
                     </Grid>
 
-                    <Grid Grid.Row="1">
+                    <!--<Grid Grid.Row="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30" />
                             <RowDefinition Height="30" />
@@ -603,8 +602,8 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="200" />
                             <ColumnDefinition Width="200" />
-                        </Grid.ColumnDefinitions>
-                        <Grid
+                        </Grid.ColumnDefinitions>-->
+                    <!--<Grid
                             x:Name="DealInfo"
                             Grid.Row="0"
                             Grid.RowSpan="8"
@@ -718,8 +717,9 @@
                             FontSize="20"
                             Text="{Binding Paid}"
                             TextAlignment="Right" />
-                    </Grid>
-                    <Grid Grid.Row="2">
+                    </Grid>-->
+                    <!--</Grid>-->
+                    <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition />
@@ -773,7 +773,10 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Агенты" Style="{StaticResource HeightColor}">
+            <TabItem
+                Name="tabAgents"
+                Header="Агенты"
+                Style="{StaticResource HeightColor}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40" />
@@ -796,34 +799,18 @@
                                 <Button Name="btDeleteAgent" Click="btDeleteAgent_Click">
                                     <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\delete_user.png" />
                                 </Button>
-                                <Separator />
+                                <!--<Separator />
                                 <Button Name="View_Applicant" Click="View_Applicant_Click_3">
                                     <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\info_user.png" />
-                                </Button>
-
-                                <!--<Separator />-->
-                                <!--<Button Name="bt_Pringhjt_Info_Applicant" Click="bt_Print_Info_Applicant_Click">
-                                    <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\printer.png" />
                                 </Button>-->
-                                <!--<Separator />
-                                <Button Name="btSeaghjchApplicant">
-                                    <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\search_user.png" />
-                                </Button>-->
-
                             </ToolBar>
                         </ToolBarTray>
-                        <Button
+                        <!--<Button
                             Width="150"
                             Height="25"
                             Margin="5"
-                            Content="Список сделок" />
-
-
-
-
-
+                            Content="Список сделок" />-->
                     </Grid>
-
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -843,6 +830,16 @@
                                 <DataGrid.Columns>
 
                                     <DataGridTextColumn
+                                        x:Name="loginAgent"
+                                        Width="120"
+                                        Binding="{Binding Login}"
+                                        Header="Логин" />
+                                    <DataGridTextColumn
+                                        x:Name="PasswordAgent"
+                                        Width="120"
+                                        Binding="{Binding Password}"
+                                        Header="Пароль" />
+                                    <DataGridTextColumn
                                         x:Name="nameAgent"
                                         Width="120"
                                         Binding="{Binding LastNameAgent}"
@@ -852,11 +849,14 @@
                                         Binding="{Binding NameAgent}"
                                         Header="Имя" />
                                     <DataGridTextColumn
-                                        Width="200"
+                                        Width="120"
                                         Binding="{Binding Phone}"
                                         Header="Телефон" />
-
-
+                                    <DataGridTextColumn
+                                        x:Name="EmailAgent"
+                                        Width="150"
+                                        Binding="{Binding Email}"
+                                        Header="Почта" />
                                 </DataGrid.Columns>
                             </DataGrid>
                         </ScrollViewer>
@@ -873,32 +873,55 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
+                        <ToolBarTray Height="40" VerticalAlignment="Top">
+                            <ToolBar VerticalAlignment="Top">
+                                <ToggleButton Name="addPosition" Click="addPosition_Click">
+                                    <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\add.png" />
+                                </ToggleButton>
+                                <Separator />
+                                <Button Name="editPosition" Click="editPosition_Click">
+                                    <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\edit.png" />
+                                </Button>
+                                <Separator />
+                                <Button Name="deletePosition" Click="deletePosition_Click">
+                                    <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\delete.png" />
+                                </Button>
 
-
-                        <Button
+                            </ToolBar>
+                        </ToolBarTray>
+                        <!--<Button
                             Name="addPosition"
                             Width="150"
                             Margin="10"
                             Click="addPosition_Click"
-                            Content="Добавть" />
-                        <Button
+                            Content="Добавть" />-->
+                        <!--<Button
                             Name="editPosition"
                             Width="150"
                             Margin="10"
                             Click="editPosition_Click"
-                            Content="Изменить" />
-                        <Button
+                            Content="Изменить" />-->
+                        <!--<Button
                             Name="deletePosition"
                             Width="150"
                             Margin="10"
                             Click="deletePosition_Click"
-                            Content="Удалить" />
+                            Content="Удалить" />-->
 
                     </Grid>
                     <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="380" />
+                        </Grid.RowDefinitions>
                         <ScrollViewer>
                             <DataGrid
                                 x:Name="dGridPosition"
+                                Grid.Row="0"
+                                Grid.Column="0"
                                 AutoGenerateColumns="False"
                                 Background="#FFE5E5E5"
                                 IsReadOnly="True"

@@ -18,26 +18,24 @@ using System.Text.RegularExpressions;
 namespace Agency1.window
 {
     /// <summary>
-    /// Interaction logic for AddAgent.xaml
+    /// Interaction logic for EditAgent.xaml
     /// </summary>
-    public partial class AddAgent : Window
+    public partial class EditAgent : Window
     {
         AgentViewModels agent;
-        public AddAgent()
+        public EditAgent()
         {
             InitializeComponent();
         }
-        public AddAgent(AgentViewModels agent) : this()
+        public EditAgent(AgentViewModels agent) :this()
         {
             this.agent = agent;
             this.DataContext = agent;
         }
-
         private void btCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
         private void btOk_Click(object sender, RoutedEventArgs e)
         {
             if (tb_login1.Text.Length == 0)
@@ -55,16 +53,11 @@ namespace Agency1.window
                 MessageBox.Show("Поле имя не может быть пустым.");
                 tb_name1.Focus();
             }
-            else if (tb_phone1.Text.Length == 0 )
+            else if (tb_phone1.Text.Length == 0)
             {
                 MessageBox.Show("Поле телефон не может быть пустым.");
                 tb_phone1.Focus();
             }
-            //else if (tb_phone1.Text.Length == 7)
-            //{
-            //    MessageBox.Show("Поле телефон должно быть равно 7 цифрам");
-            //    tb_phone1.Focus();
-            //}
             else if (tb_email1.Text.Length == 0)
             {
                 MessageBox.Show("Поле email не может быть пустым.");
@@ -76,22 +69,7 @@ namespace Agency1.window
                 tb_email1.Select(0, tb_email1.Text.Length);
                 tb_email1.Focus();
             }
-            //else
-            //{
-            //    //string login = tb_login1.Text;
-            //    //string last_name = tb_last_name1.Text;
-            //    //string name = tb_name1.Text;
-            //    //string password = tb_password1.Password;
-            //    //int phone = Convert.ToInt32(tb_phone1.Text);
-            //    //string email = tb_email1.Text;
-            //    //int roleId = 3;
-            //    //if (tb_password1.Password.Length == 0)
-            //    //{
-            //    //    MessageBox.Show("Введите пароль.");
-            //    //    tb_password1.Focus();
-            //    //}
-            //  }
-            else 
+            else
             {
                 try
                 {
@@ -103,7 +81,8 @@ namespace Agency1.window
                     agent.Email = tb_email1.Text;
                     agent.RoleId = 3;
 
-                }catch (Exception ex)
+                }
+                catch (Exception ex)
                 { MessageBox.Show("Ошибка" + ex.Message); }
                 this.DialogResult = true;
             }

@@ -60,13 +60,10 @@ namespace Agency1
 
         public MainWindow()
         {
-             InitializeComponent();
-
-           
+             InitializeComponent();         
         }
-        public MainWindow(AgentViewModels agentUser)
-        {
-            InitializeComponent();
+        public MainWindow(AgentViewModels agentUser) : this()
+        {            
             dataBase = new EntityUnitOfWork("AgencyDB");
 
             Mapper.Reset();
@@ -89,14 +86,12 @@ namespace Agency1
             dealService = new DealService(dataBase);
             roleService = new RoleService(dataBase);
 
-
             applicantsModel = applicantService.GetAll();
             employersModel = employerService.GetAll();
             rolesModel = roleService.GetAll();
             agentsModel = agentService.GetAll();
             positionsModel = positionService.GetAll();
             vacanciesModel = vacancyService.GetAll();
-
             dealsModel = dealService.GetAll();
 
             dGridApplicants.DataContext = applicantsModel.Where(p => (p.Deals.Count < 1) & p.AgentId ==  agentUser.AgentId);
@@ -109,6 +104,10 @@ namespace Agency1
             dGridReportWoman.DataContext = vacanciesModel.Where(p => p.Gender == Gender.женщина || p.Gender == Gender.любой);
             dGridReportMan.DataContext = vacanciesModel.Where(p => p.Gender == Gender.мужчина || p.Gender == Gender.любой);
             cbPositions.ItemsSource = positionsModel;
+            if(agentUser.RoleId == 3)
+            {
+                tabAgents.IsEnabled = false;
+            }
 
             logger.Info("Application started");
         }
@@ -345,10 +344,33 @@ namespace Agency1
                 a.Close();
             }
         }
-
+        //Edit Agent
         private void btEditAgent_Click(object sender, RoutedEventArgs e)
         {
-
+            /* ApplicantViewModels applicantModel = dGridApplicants.SelectedItem as ApplicantViewModels;
+            int Index = dGridApplicants.SelectedIndex;
+            var ap = new EditApplicant(applicantModel, positionsModel, agentsModel);
+            ap.Title = "Изменить запись";
+            ap.Owner = this;
+            var result = ap.ShowDialog();
+            if (result == true)
+            {
+                applicantService.UpdateApplicant(applicantModel);
+                ResetCollection("ApplicantViewModel");
+                ap.Close();
+            }           */
+            AgentViewModels agentModel = dGridAgent.SelectedItem as AgentViewModels;
+            int Index = dGridAgent.SelectedIndex;
+            var ag = new EditAgent(agentModel);
+            ag.Title = "Изменить запись";
+            ag.Owner = this;
+            var result = ag.ShowDialog();
+            if (result == true)
+            {
+                agentService.UpdateAgent(agentModel);
+                ResetCollection("AgentViewModel");
+                ag.Close();
+            }
         }
 
         private void btDeleteAgent_Click(object sender, RoutedEventArgs e)
@@ -362,11 +384,7 @@ namespace Agency1
                 dGridAgent.SelectedIndex = 0;
             }
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+     
         //закрытие вакансии
         private void Button_Close_Vacancy_Click(object sender, RoutedEventArgs e)
         {
@@ -404,6 +422,7 @@ namespace Agency1
                 int Index = applicantsModel.Count - 1;
                 dGridApplicants.SelectedIndex = Index;
                 aa.Close();
+               
             }
         }
 
@@ -432,7 +451,7 @@ namespace Agency1
             }
         }
         //отчет в виде таблицы подходящие applicants на vacancie
- private void Button_click_report_vacancie_applicant(object sender, RoutedEventArgs e)
+        private void Button_click_report_vacancie_applicant(object sender, RoutedEventArgs e)
         {
             var appl = (ApplicantViewModels)dGridApplicants.SelectedItem;
             var newmodel = vacanciesModel.Where(p => p.PositionId == appl.PositionId).ToList();
@@ -538,10 +557,6 @@ namespace Agency1
          
         }
 
-        private void Button_Click_6(object sender, RoutedEventArgs e)
-        {
-
-        }
         //form vacancie applicant go deal
         private void Button_Click_Form_Vacancie(object sender, RoutedEventArgs e)
         {
@@ -627,8 +642,16 @@ namespace Agency1
         }
         //delete applicant
         private void btDeleteApplicant_Click(object sender, RoutedEventArgs e)
-        {
+        {          
+            var result = MessageBox.Show("Вы уверены?", "Удалить запись", MessageBoxButton.YesNo);
 
+            if (result == MessageBoxResult.Yes)
+            {
+                var applicantModel = (ApplicantViewModels)dGridApplicants.SelectedItem;
+                applicantService.DeleteApplicant(applicantModel.ApplicantId);               
+                ResetCollection("ApplicantViewModel");
+                dGridApplicants.SelectedIndex = 0;
+            }
         }
     }
 }

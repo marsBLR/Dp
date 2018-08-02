@@ -74,10 +74,14 @@ namespace Agency1.BusinessLayer.Services
         public void UpdateAgent(AgentViewModels agentModel)
         {
             Agent agentEntityDB = dataBase.Agents.Get(agentModel.AgentId);
+            agentEntityDB.Login = agentModel.Login;
+            agentEntityDB.Password = agentModel.Password;
             // Appointment appointmentEntity = Mapper.Map<Appointment>(appointmentModel);
             agentEntityDB.LastNameAgent = agentModel.LastNameAgent;
             agentEntityDB.NameAgent = agentModel.NameAgent;
-            agentEntityDB.Phone = agentModel.Phone;           
+            agentEntityDB.Phone = agentModel.Phone;
+            agentEntityDB.Email = agentModel.Email;
+                       
 
             dataBase.Agents.Update(agentEntityDB);
             dataBase.Save();
