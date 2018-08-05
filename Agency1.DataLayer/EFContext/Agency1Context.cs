@@ -22,6 +22,8 @@ namespace Agency1.DataLayer.EFContext
         public DbSet<Position> Positions { get; set; }
         public DbSet<Vacancie> Vacancies { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Contract> Contracts { get; set; }
+        public DbSet<PaymentAccount> PaymentAccounts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

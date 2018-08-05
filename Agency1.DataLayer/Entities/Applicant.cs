@@ -20,6 +20,7 @@ namespace Agency1.DataLayer.Entities
         public DateTime DateBirth { get; set; }
         public Gender Gender { get; set; }
         public Education Education { get; set; }
+        public ForeignLanguage ForeignLanguage { get; set; }
         public decimal EstimatedSalary { get; set; }
         public string OtherInformation { get; set; }
         public DateTime DateFilling { get; set; }
@@ -47,4 +48,5 @@ namespace Agency1.DataLayer.Entities
         высшее,
         без_образования
     }
+
 }

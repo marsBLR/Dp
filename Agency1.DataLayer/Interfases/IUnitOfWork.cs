@@ -16,6 +16,8 @@ namespace Agency1.DataLayer.Interfases
         IRepository<Position> Positions { get; }
         IRepository<Vacancie> Vacancies { get; }
         IRepository<Role> Roles { get; }
+        IRepository<Contract> Contracts { get; }
+        IRepository<PaymentAccount> PaymentAccounts { get; }
 
         void Save();
 

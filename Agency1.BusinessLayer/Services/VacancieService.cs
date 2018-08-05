@@ -101,7 +101,7 @@ namespace Agency1.BusinessLayer.Services
             vacancyEntityDB.ForeignLanguage = vacancyModel.ForeignLanguage;
             vacancyEntityDB.Salary = vacancyModel.Salary;
             vacancyEntityDB.WorkingConditions = vacancyModel.WorkingConditions;
-            vacancyEntityDB.DateFilling = vacancyModel.DateFilling;
+            vacancyEntityDB.DateOpen = vacancyModel.DateOpen;
             vacancyEntityDB.OpenVacancy = vacancyModel.OpenVacancy;
             
 

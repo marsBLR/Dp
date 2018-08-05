@@ -19,6 +19,8 @@ namespace Agency1.DataLayer.Repositories
         PositionRepository positionsRepository;
         VacancieRepository vacanciesRepository;
         RoleRepository rolesRepository;
+        ContractRepository contractRepository;
+        PaymentAccountRepository paymentAccountRepository;
 
         public EntityUnitOfWork(string name)
         {
@@ -92,6 +94,26 @@ namespace Agency1.DataLayer.Repositories
                 if (rolesRepository == null)
                     rolesRepository = new RoleRepository(context);
                 return rolesRepository;
+            }
+        }
+
+        public IRepository<Contract> Contracts
+        {
+            get
+            {
+                if (contractRepository == null)
+                    contractRepository = new ContractRepository(context);
+                return contractRepository;
+            }
+        }
+
+        public IRepository<PaymentAccount> PaymentAccounts
+        {
+            get
+            {
+                if (paymentAccountRepository == null)
+                    paymentAccountRepository = new PaymentAccountRepository(context);
+                return paymentAccountRepository;
             }
         }
 

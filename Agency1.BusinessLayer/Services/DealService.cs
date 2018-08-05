@@ -69,7 +69,7 @@ namespace Agency1.BusinessLayer.Services
          ///   dealEntityDB.VacancyId = dealModel.Vaca;
           //  dealEntityDB.AgentId = dealModel.AgentId;
             dealEntityDB.DateCompilation = dealModel.DateCompilation;
-            dealEntityDB.Commission = dealModel.Commission;
+         //   dealEntityDB.Commission = dealModel.Commission;
             dealEntityDB.Paid = dealModel.Paid;
             dealEntityDB.DatePaid = dealModel.DatePaid;
 

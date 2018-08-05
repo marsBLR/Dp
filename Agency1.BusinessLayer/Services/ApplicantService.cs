@@ -56,6 +56,7 @@ namespace Agency1.BusinessLayer.Services
             applicantEntityDB.DateBirth = applicantModel.DateBirth;
             applicantEntityDB.Gender = applicantModel.Gender;
             applicantEntityDB.Education = applicantModel.Education;
+            applicantEntityDB.ForeignLanguage = applicantModel.ForeignLanguage;
             applicantEntityDB.EstimatedSalary = applicantModel.EstimatedSalary;
             applicantEntityDB.OtherInformation = applicantModel.OtherInformation;
             applicantEntityDB.DateFilling = applicantModel.DateFilling;

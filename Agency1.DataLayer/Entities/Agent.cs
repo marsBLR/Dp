@@ -13,6 +13,7 @@ namespace Agency1.DataLayer.Entities
         {
             //Deals = new List<Deal>();
             Applicants = new List<Applicant>();
+            Contracts = new List<Contract>();
         }
        
         public int AgentId { get; set; }
@@ -28,5 +29,6 @@ namespace Agency1.DataLayer.Entities
         public int RoleId { get; set; }
         public Role Role { get; set; }
         public List<Applicant> Applicants { get; set; }
+        public List<Contract> Contracts { get; set; }
     }
 }

@@ -14,7 +14,8 @@ namespace Agency1.BusinessLayer.Models
         public ForeignLanguage ForeignLanguage { get; set; }
         public decimal Salary { get; set; }
         public string WorkingConditions { get; set; }
-        public DateTime DateFilling { get; set; }
+        public DateTime DateOpen { get; set; }
+        public DateTime? DateClose { get; set; }
         public OpenVacancy OpenVacancy { get; set; }
 
         //gjcktl rjhhjn

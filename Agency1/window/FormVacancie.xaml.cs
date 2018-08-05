@@ -63,7 +63,7 @@ namespace Agency1.window
 
                 //deal.Vacancie.VacancieId = vacancieGrid.VacancieId;
                 
-                deal.Commission = Convert.ToInt32(tbCommision.Text);
+             //   deal.Commission = Convert.ToInt32(tbCommision.Text);
                 deal.DateCompilation = Convert.ToDateTime(DatePickerFromvac.Text);
                 deal.Paid = Paid.нет;
                 deal.DatePaid = Convert.ToDateTime(DatePickerFromReport.Text);

@@ -249,7 +249,7 @@
                                         Binding="{Binding DateBirth, StringFormat='{}{0:yyyy/MM/dd}'}"
                                         Header="Дата Рождения" />
                                     <DataGridTextColumn
-                                        Width="80"
+                                        Width="70"
                                         Binding="{Binding Gender}"
                                         Header="Пол" />
                                     <DataGridTextColumn
@@ -257,9 +257,22 @@
                                         Binding="{Binding Path=Position.PositionName}"
                                         Header="Должность" />
                                     <DataGridTextColumn
+                                        Width="120"
+                                        Binding="{Binding EstimatedSalary}"
+                                        Header="Желаемая зарплата" />
+                                    <DataGridTextColumn
+                                        Width="85"
+                                        Binding="{Binding Education}"
+                                        Header="Образование" />
+                                    <DataGridTextColumn
+                                        Width="70"
+                                        Binding="{Binding Vacancie.ForeignLanguage}"
+                                        Header="Языки" />
+                                    <DataGridTextColumn
                                         Width="80"
                                         Binding="{Binding Path=Agent.LastNameAgent}"
                                         Header="Агент" />
+
                                 </DataGrid.Columns>
                             </DataGrid>
                         </ScrollViewer>
@@ -376,27 +389,32 @@
                                 <DataGrid.Columns>
 
                                     <DataGridTextColumn
-                                        x:Name="nameEmployer"
+                                        x:Name="lastNameEmployer"
                                         Width="110"
-                                        Binding="{Binding NameEmployer}"
-                                        Header="Название" />
+                                        Binding="{Binding LastNameEmployer}"
+                                        Header="Фамилия" />
                                     <DataGridTextColumn
-                                        x:Name="industry"
+                                        x:Name="nameEmployer"
                                         Width="120"
-                                        Binding="{Binding Industry}"
-                                        Header="Отрасль" />
+                                        Binding="{Binding NameEmployer}"
+                                        Header="Имя" />
+                                    <DataGridTextColumn
+                                        x:Name="patronymicEmployer"
+                                        Width="120"
+                                        Binding="{Binding PatronymicEmployer}"
+                                        Header="Отчество" />
                                     <DataGridTextColumn
                                         Width="200"
                                         Binding="{Binding AddressEmployer}"
                                         Header="Адрес" />
                                     <DataGridTextColumn
-                                        Width="80"
+                                        Width="100"
                                         Binding="{Binding Phone}"
                                         Header="Телефон" />
-                                    <DataGridTextColumn
+                                    <!--<DataGridTextColumn
                                         Width="180"
                                         Binding="{Binding FullNameEmployers}"
-                                        Header="Контактное лицо" />
+                                        Header="Контактное лицо" />-->
 
                                 </DataGrid.Columns>
                             </DataGrid>
@@ -408,6 +426,153 @@
 
 
             </TabItem>
+            <TabItem
+                Name="TabContract"
+                Header="Договоры"
+                Style="{StaticResource HeightColor}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="300" />
+
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="1">
+                        <ScrollViewer>
+                            <DataGrid
+                                x:Name="dGridContract"
+                                AutoGenerateColumns="False"
+                                IsReadOnly="True"
+                                IsSynchronizedWithCurrentItem="True"
+                                ItemsSource="{Binding}"
+                                LoadingRow="dGrid_LoadingRow"
+                                RowHeaderWidth="40"
+                                SelectionMode="Single">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn
+                                        Width="65"
+                                        Binding="{Binding Path=ContractId}"
+                                        Header="Номер №" />
+
+                                    <DataGridTextColumn
+                                        Width="105"
+                                        Binding="{Binding DateOfContract, StringFormat='{}{0:yyyy/MM/dd}'}"
+                                        Header="Дата заключения" />
+                                    <DataGridTextColumn
+                                        Width="50"
+                                        Binding="{Binding StatusContract}"
+                                        Header="Статус" />
+
+                                    <DataGridTextColumn
+                                        Width="50"
+                                        Binding="{Binding Sum}"
+                                        Header="Сумма" />
+                                    <DataGridTextColumn
+                                        Width="50"
+                                        Binding="{Binding Path=Currency}"
+                                        Header="Валюта" />
+                                    <DataGridTextColumn
+                                        Width="50"
+                                        Binding="{Binding Path=Discount}"
+                                        Header="Скидка" />
+
+                                    <DataGridTextColumn
+                                        Width="55"
+                                        Binding="{Binding Path=AgentId}"
+                                        Header="AgentId" />
+                                    <DataGridTextColumn
+                                        Width="100"
+                                        Binding="{Binding Path=Agent.LastNameAgent}"
+                                        Header="Агент Фамилия" />
+                                    <DataGridTextColumn
+                                        Width="70"
+                                        Binding="{Binding EmployerId}"
+                                        Header="EmployerId" />
+                                    <DataGridTextColumn
+                                        Width="100"
+                                        Binding="{Binding Path=Employer.NameEmployer}"
+                                        Header="Работодатель" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+
+                    </Grid>
+                </Grid>
+
+            </TabItem>
+            <TabItem
+                Name="TabPaymentAccount"
+                Header="Счета"
+                Style="{StaticResource HeightColor}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="300" />
+
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="1">
+                        <ScrollViewer>
+                            <DataGrid
+                                x:Name="dGridPaymentAccount"
+                                AutoGenerateColumns="False"
+                                IsReadOnly="True"
+                                IsSynchronizedWithCurrentItem="True"
+                                ItemsSource="{Binding}"
+                                LoadingRow="dGrid_LoadingRow"
+                                RowHeaderWidth="40"
+                                SelectionMode="Single">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn
+                                        Width="65"
+                                        Binding="{Binding Path=PaymentAccountId}"
+                                        Header="Номер №" />
+
+                                    <DataGridTextColumn
+                                        Width="110"
+                                        Binding="{Binding DateOfInvoice, StringFormat='{}{0:yyyy/MM/dd}'}"
+                                        Header="Дата выставления" />
+                                    <DataGridTextColumn
+                                        Width="100"
+                                        Binding="{Binding SumPayment}"
+                                        Header="Сумма счета" />
+
+                                    <DataGridTextColumn
+                                        Width="90"
+                                        Binding="{Binding TypeOfCalculation}"
+                                        Header="Тип расчета" />
+                                    <DataGridTextColumn
+                                        Width="60"
+                                        Binding="{Binding Path=StatusPayment}"
+                                        Header="Статус" />
+                                    <DataGridTextColumn
+                                        Width="100"
+                                        Binding="{Binding Path=DateOfPayment, StringFormat='{}{0:yyyy/MM/dd}'}"
+                                        Header="Дата оплаты" />
+
+                                    <DataGridTextColumn
+                                        Width="70"
+                                        Binding="{Binding Path=ContractId}"
+                                        Header="ContractId" />
+                                    <!--<DataGridTextColumn
+                                        Width="100"
+                                        Binding="{Binding Path=Agent.LastNameAgent}"
+                                        Header="Агент Фамилия" />
+                                    <DataGridTextColumn
+                                        Width="70"
+                                        Binding="{Binding EmployerId}"
+                                        Header="EmployerId"/>
+                                    <DataGridTextColumn
+                                        Width="100"
+                                        Binding="{Binding Path=Employer.NameEmployer}"
+                                        Header="Работодатель" />-->
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+
+                    </Grid>
+                </Grid>
+
+            </TabItem>
+
 
             <TabItem
                 Name="TabVacancie"
@@ -519,14 +684,14 @@
                                     <DataGridTextColumn
                                         Width="105"
                                         Binding="{Binding Path=DateFilling, StringFormat='{}{0:yyyy/MM/dd}'}"
-                                        Header="Дата заполнения" />
+                                        Header="Дата открытия" />
                                     <DataGridTextColumn
                                         Width="80"
                                         Binding="{Binding Path=OpenVacancy}"
                                         Header="Открыта" />
                                     <DataGridTextColumn
                                         Width="100"
-                                        Binding="{Binding Path=Employer.NameEmployer}"
+                                        Binding="{Binding Path=Employer.LastNameEmployer}"
                                         Header="Работодатель" />
                                 </DataGrid.Columns>
                             </DataGrid>

@@ -110,12 +110,7 @@
                             DataContext="{Binding ElementName=dGridApplicants, Path=SelectedValue}"
                             FontSize="20"
                             Text="{Binding LastNameAp}" />
-                        <TextBox
-                            Name="tbCommision"
-                            Grid.Row="3"
-                            Grid.Column="1"
-                            Margin="10,5,10,5"
-                            Text="{Binding Commission}" />
+
                         <TextBlock
                             Name="tbAgentApp"
                             Grid.Row="2"
@@ -166,11 +161,7 @@
                             Grid.Column="0"
                             FontSize="20"
                             Text="Агент" />
-                        <TextBlock
-                            Grid.Row="3"
-                            Grid.Column="0"
-                            FontSize="20"
-                            Text="Комиссионные" />
+
                         <TextBlock
                             Grid.Row="4"
                             Grid.Column="0"

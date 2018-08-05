@@ -82,11 +82,13 @@ namespace Agency1.BusinessLayer.Services
         {
             Employer employerEntityDB = dataBase.Employers.Get(employerModel.EmployerId);
             // Appointment appointmentEntity = Mapper.Map<Appointment>(appointmentModel);
+            employerEntityDB.LastNameEmployer = employerModel.LastNameEmployer;
             employerEntityDB.NameEmployer = employerModel.NameEmployer;
-            employerEntityDB.Industry = employerModel.Industry;
+            employerEntityDB.PatronymicEmployer = employerModel.PatronymicEmployer;
+          //  employerEntityDB.Industry = employerModel.Industry;
             employerEntityDB.AddressEmployer = employerModel.AddressEmployer;
             employerEntityDB.Phone = employerModel.Phone;
-            employerEntityDB.FullNameEmployers = employerModel.FullNameEmployers;
+        //    employerEntityDB.FullNameEmployers = employerModel.FullNameEmployers;
            
 
             dataBase.Employers.Update(employerEntityDB);

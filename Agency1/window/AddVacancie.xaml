@@ -80,7 +80,7 @@
             Grid.Row="8"
             Grid.Column="0"
             Margin="10,5,0,0"
-            Text="Дата регистрации" />
+            Text="Дата открытия" />
         <TextBlock
             Grid.Row="9"
             Grid.Column="0"

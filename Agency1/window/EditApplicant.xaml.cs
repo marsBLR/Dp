@@ -32,12 +32,17 @@ namespace Agency1.window
             cbEducation.Items.Add(Education.высшее);
             cbEducation.Items.Add(Education.средне_специальное);
             cbEducation.Items.Add(Education.среднее);
+            cbForeignLanguage.Items.Add(ForeignLanguage.ENGLISH);
+            cbForeignLanguage.Items.Add(ForeignLanguage.FRENCH);
+            cbForeignLanguage.Items.Add(ForeignLanguage.GERMAN);
+            cbForeignLanguage.Items.Add(ForeignLanguage.нет);
         }
         public EditApplicant(ApplicantViewModels applicant, ObservableCollection<PositionViewModels> position, ObservableCollection<AgentViewModels> agent) : this()
         {
             this.applicant = applicant;
             cbPosition.ItemsSource = position;
             cbAgent.ItemsSource = agent;
+            
             this.DataContext = applicant;
         }
         private void btCancel_Click(object sender, RoutedEventArgs e)
@@ -68,6 +73,7 @@ namespace Agency1.window
                     applicant.DateBirth = Convert.ToDateTime(DatePickerDateBirth.Text);
                     applicant.Gender = (Gender)cbGender.SelectedItem;
                     applicant.Education = (Education)cbEducation.SelectedItem;
+                    applicant.ForeignLanguage = (ForeignLanguage)cbForeignLanguage.SelectedItem;
                     applicant.EstimatedSalary = Convert.ToInt32(tbEstimatedSalary.Text);
                     applicant.OtherInformation = tbOtherInformation.Text;
                     //applicant.DateFilling = (DateTime)tbDateFilling.;

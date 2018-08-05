@@ -35,59 +35,64 @@
             Grid.Row="0"
             Grid.Column="0"
             Margin="10,5,0,0"
-            Text="Название" />
+            Text="Фамилия" />
         <TextBlock
             Grid.Row="1"
             Grid.Column="0"
             Margin="10,5,0,0"
-            Text="Отрасль" />
+            Text="Имя" />
         <TextBlock
             Grid.Row="2"
             Grid.Column="0"
             Margin="10,5,0,0"
-            Text="Адрес" />
+            Text="Отчество" />
         <TextBlock
             Grid.Row="3"
             Grid.Column="0"
             Margin="10,5,0,0"
-            Text="Телефон" />
+            Text="Адрес" />
         <TextBlock
             Grid.Row="4"
             Grid.Column="0"
             Margin="10,5,0,0"
-            Text="Контакт" />
+            Text="Телефон" />
+        <!--<TextBlock
+            Grid.Row="5"
+            Grid.Column="0"
+            Margin="10,5,0,0"
+            Text="Контакт" />-->
 
 
         <TextBox
-            Name="tbName"
+            Name="tbLastName"
             Grid.Row="0"
+            Grid.Column="1"
+            Margin="10,5,10,5"
+            Text="{Binding LastNameEmployer}" />
+        <TextBox
+            Name="tbName"
+            Grid.Row="1"
             Grid.Column="1"
             Margin="10,5,10,5"
             Text="{Binding NameEmployer}" />
         <TextBox
-            Name="tbInd"
-            Grid.Row="1"
+            Name="tbPatronymic"
+            Grid.Row="2"
             Grid.Column="1"
             Margin="10,5,10,5"
-            Text="{Binding Industry}" />
+            Text="{Binding PatronymicEmployer}" />
         <TextBox
             Name="tbAdress"
-            Grid.Row="2"
+            Grid.Row="3"
             Grid.Column="1"
             Margin="10,5,10,5"
             Text="{Binding AddressEmployer}" />
         <TextBox
             Name="tbPhone"
-            Grid.Row="3"
-            Grid.Column="1"
-            Margin="10,5,10,5"
-            Text="{Binding Phone}" />
-        <TextBox
-            Name="tbContract"
             Grid.Row="4"
             Grid.Column="1"
             Margin="10,5,10,5"
-            Text="{Binding FullNameEmployers}" />
+            Text="{Binding Phone}" />
 
         <Button
             Name="btCancel"

@@ -44,6 +44,8 @@ namespace Agency1
         ObservableCollection<VacancieViewModels> vacanciesModel;
         ObservableCollection<DealViewModels> dealsModel;
         ObservableCollection<RoleViewModels> rolesModel;
+        ObservableCollection<ContractViewModel> contractModel;
+        ObservableCollection<PaymentAccountViewModel> paymentAccountModel;
 
         VacancieViewModels v = new VacancieViewModels();
         ApplicantViewModels appli = new ApplicantViewModels();
@@ -55,6 +57,8 @@ namespace Agency1
         IVacancieService vacancyService;
         IDealService dealService;
         IRoleService roleService;
+        IContractService contractService;
+        IPaymentAccountService paymentAccountService;
 
         Logger logger = LogManager.GetCurrentClassLogger();
 
@@ -76,6 +80,8 @@ namespace Agency1
                 cfg.CreateMap<Vacancie, VacancieViewModels>();
                 cfg.CreateMap<Role, RoleViewModels>();
                 cfg.CreateMap<Deal, DealViewModels>();
+                cfg.CreateMap<Contract, ContractViewModel>();
+                cfg.CreateMap<PaymentAccount, PaymentAccountViewModel>();
             });
 
             agentService = new AgentService(dataBase);
@@ -85,6 +91,8 @@ namespace Agency1
             vacancyService = new VacancieService(dataBase);
             dealService = new DealService(dataBase);
             roleService = new RoleService(dataBase);
+            contractService = new ContractService(dataBase);
+            paymentAccountService = new PaymentAccountService(dataBase);
 
             applicantsModel = applicantService.GetAll();
             employersModel = employerService.GetAll();
@@ -93,20 +101,24 @@ namespace Agency1
             positionsModel = positionService.GetAll();
             vacanciesModel = vacancyService.GetAll();
             dealsModel = dealService.GetAll();
+            contractModel = contractService.GetAll();
+            paymentAccountModel = paymentAccountService.GetAll();
 
             dGridApplicants.DataContext = applicantsModel.Where(p => (p.Deals.Count < 1) & p.AgentId ==  agentUser.AgentId);
             dGridEmployer.DataContext = employersModel;
             dGridPosition.DataContext = positionsModel;
             dGridAgent.DataContext = agentsModel;
             dGridVacancies.DataContext = vacanciesModel;
-            dGridDeals.DataContext = dealsModel;
+            dGridDeals.DataContext = dealsModel.Where(p => p.Applicant.AgentId == agentUser.AgentId); ;
+            dGridContract.DataContext = contractModel.Where(p => p.AgentId == agentUser.AgentId);
+            dGridPaymentAccount.DataContext = paymentAccountModel.Where(p => p.Contracts.AgentId == agentUser.AgentId);
 
             dGridReportWoman.DataContext = vacanciesModel.Where(p => p.Gender == Gender.женщина || p.Gender == Gender.любой);
             dGridReportMan.DataContext = vacanciesModel.Where(p => p.Gender == Gender.мужчина || p.Gender == Gender.любой);
             cbPositions.ItemsSource = positionsModel;
             if(agentUser.RoleId == 3)
             {
-                tabAgents.IsEnabled = false;
+                tabAgents.Visibility = Visibility.Collapsed;
             }
 
             logger.Info("Application started");

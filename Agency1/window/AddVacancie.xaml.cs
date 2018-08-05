@@ -64,7 +64,7 @@ namespace Agency1.window
                 vacancie.ForeignLanguage = (ForeignLanguage)cbLanguage.SelectedItem;
                 vacancie.Salary = Convert.ToInt32(tbSalary.Text);
                 vacancie.WorkingConditions = tbWorkingConditions.Text;
-                vacancie.DateFilling = Convert.ToDateTime(DatePickerAddVacancie.Text);
+                vacancie.DateOpen = Convert.ToDateTime(DatePickerAddVacancie.Text);
                 vacancie.OpenVacancy = OpenVacancy.да;
                 //vacancie.Employer = employer;
                 //vacancie.Employer.EmployerId = employer.EmployerId;

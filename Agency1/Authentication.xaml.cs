@@ -86,7 +86,7 @@ namespace Agency1.window
                     int k = Convert.ToInt32(userid);
                     string username = dataset.Tables[0].Rows[0]["LastNameAgent"].ToString() + " " + dataset.Tables[0].Rows[0]["NameAgent"].ToString();
                     
-                    MessageBox.Show(userid);
+                //    MessageBox.Show(userid);
                     foreach (AgentViewModels agent in agentService.GetAll())
                     {
                         if (agent.AgentId == k)

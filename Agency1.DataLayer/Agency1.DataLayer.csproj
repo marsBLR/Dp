@@ -55,8 +55,10 @@
     <Compile Include="EFContext\Agency1Initializer.cs" />
     <Compile Include="Entities\Agent.cs" />
     <Compile Include="Entities\Applicant.cs" />
+    <Compile Include="Entities\Contract.cs" />
     <Compile Include="Entities\Deal.cs" />
     <Compile Include="Entities\Employer.cs" />
+    <Compile Include="Entities\PaymentAccount.cs" />
     <Compile Include="Entities\Position.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\Vacancie.cs" />
@@ -65,9 +67,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AgentRepository.cs" />
     <Compile Include="Repositories\ApplicantRepository.cs" />
+    <Compile Include="Repositories\ContractRepository.cs" />
     <Compile Include="Repositories\DealRepository.cs" />
     <Compile Include="Repositories\EmployerRepository.cs" />
     <Compile Include="Repositories\EntityUnitOfWork.cs" />
+    <Compile Include="Repositories\PaymentAccountRepository.cs" />
     <Compile Include="Repositories\PositionRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\VacancieRepository.cs" />

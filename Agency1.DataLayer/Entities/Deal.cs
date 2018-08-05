@@ -12,7 +12,7 @@ namespace Agency1.DataLayer.Entities
     {
         public int DealId { get; set; }
         public DateTime DateCompilation { get; set; }
-        public decimal Commission { get; set; }
+        
         public Paid Paid { get; set; }
         public DateTime DatePaid { get; set; }
 

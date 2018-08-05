@@ -16,6 +16,7 @@ namespace Agency1.BusinessLayer.Models
         public string PatronymicAp { get; set; }
         public DateTime DateBirth { get; set; }
         public Gender Gender { get; set; }
+        public ForeignLanguage ForeignLanguage { get; set; }
         public Education Education { get; set; }
         public decimal EstimatedSalary { get; set; }
         public string OtherInformation { get; set; }
