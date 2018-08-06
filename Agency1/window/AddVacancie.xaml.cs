@@ -34,9 +34,9 @@ namespace Agency1.window
             cbEducation.Items.Add(Education.высшее);
             cbEducation.Items.Add(Education.средне_специальное);
             cbEducation.Items.Add(Education.среднее);
-            cbLanguage.Items.Add(ForeignLanguage.ENGLISH);
-            cbLanguage.Items.Add(ForeignLanguage.FRENCH);
-            cbLanguage.Items.Add(ForeignLanguage.GERMAN);
+            cbLanguage.Items.Add(ForeignLanguage.английский);
+            cbLanguage.Items.Add(ForeignLanguage.французский);
+            cbLanguage.Items.Add(ForeignLanguage.немецкий);
             cbLanguage.Items.Add(ForeignLanguage.нет);
         }
         public AddVacancie(VacancieViewModels vacancie, ObservableCollection<PositionViewModels> position, EmployerViewModels employer) : this()

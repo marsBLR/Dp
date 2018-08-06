@@ -43,9 +43,9 @@ namespace Agency1.DataLayer.Entities
     }
     public enum ForeignLanguage
     {
-        ENGLISH,
-        GERMAN,
-        FRENCH,
+        английский,
+        немецкий,
+        французский,
         нет
     } 
 }

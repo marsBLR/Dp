@@ -629,8 +629,19 @@ namespace Agency1
         //Info Applicant
         private void bt_Info_Applicant_Click(object sender, RoutedEventArgs e)
         {
-
+            ApplicantViewModels applicantModel = dGridApplicants.SelectedItem as ApplicantViewModels;
+            int Index = dGridApplicants.SelectedIndex;
+            var a = new ResumeApplicant(applicantModel);
+            a.Title = "Резюме";
+            a.Owner = this;
+            var result = a.ShowDialog();
+            if (result == true)
+            {
+                a.Close();
+            }
         }
+
+
         //Edit applicat
         private void bt_Edit_Applicant_Click(object sender, RoutedEventArgs e)
         {

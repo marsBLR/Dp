@@ -143,10 +143,10 @@
                                 <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\info_user.png" />
                             </Button>
 
-                            <Separator />
+                            <!--<Separator />
                             <Button Name="bt_Print_Info_Applicant" Click="bt_Print_Info_Applicant_Click">
                                 <Image Height="30" Source="C:\\Users\\sergei\\Downloads\\Agency1\\Agency1\\Resources\\printer.png" />
-                            </Button>
+                            </Button>-->
                             <Separator />
                             <TextBox Width="150" Foreground="LightGray">Поиск...</TextBox>
                             <Separator />
@@ -210,7 +210,10 @@
 
 
                     <Grid Grid.Row="2" ShowGridLines="True">
-
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
 
 
                         <ScrollViewer>

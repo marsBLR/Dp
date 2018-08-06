@@ -32,9 +32,9 @@ namespace Agency1.window
             cbEducation.Items.Add(Education.высшее);
             cbEducation.Items.Add(Education.средне_специальное);
             cbEducation.Items.Add(Education.среднее);
-            cbForeignLanguage.Items.Add(ForeignLanguage.ENGLISH);
-            cbForeignLanguage.Items.Add(ForeignLanguage.FRENCH);
-            cbForeignLanguage.Items.Add(ForeignLanguage.GERMAN);
+            cbForeignLanguage.Items.Add(ForeignLanguage.английский);
+            cbForeignLanguage.Items.Add(ForeignLanguage.французский);
+            cbForeignLanguage.Items.Add(ForeignLanguage.немецкий);
             cbForeignLanguage.Items.Add(ForeignLanguage.нет);
         }
         public EditApplicant(ApplicantViewModels applicant, ObservableCollection<PositionViewModels> position, ObservableCollection<AgentViewModels> agent) : this()
